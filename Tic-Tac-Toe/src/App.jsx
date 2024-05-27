@@ -3,6 +3,7 @@ import GameBoard from "./components/GameBoard";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winningCombination";
 import { useEffect, useState } from "react";
+import { data } from "autoprefixer";
 
 let originalArray = [
   [null, null, null],
@@ -12,7 +13,8 @@ let originalArray = [
 
 function App() {
   const [playingInfo, setPlayingInfo] = useState([]);
-  let game = originalArray;
+  let game = [...originalArray.map( row => [...row]
+)];
   let winning;
 
   for (const turn of playingInfo) {
@@ -32,14 +34,24 @@ function App() {
   }
 
   useEffect(() => {
-    if (playingInfo.length === 8 && !winning) {
-      let row = playingInfo[7].row;
-      let col = playingInfo[7].col;
+playingInfo.length  > 4 &&  playingInfo[playingInfo.length - 2].player === "X" ? "x" : "o";
 
-      game[row][col] = null;
-      playingInfo.pop();
+
+    if (playingInfo.length > 6 && !winning) {
+
+             
+      setPlayingInfo( (prev) => {
+          let newInfo = prev.map((data) => ({ ...data }))
+           newInfo[newInfo.length - 2].player =
+             newInfo[newInfo.length - 2].player === "X" ? "x" : "o";
+
+       newInfo.pop()
+       return newInfo
+       })
+
     }
   }, [playingInfo]);
+
   let currentPlayer;
   let testFun = () => {
     currentPlayer = "X";
@@ -59,7 +71,7 @@ function App() {
 
   return (
     <>
-      <section className="w-[90%] md:w-[700px] border bg-gray-900 p-4">
+      <section className="w-[90%] md:w-[700px] border bg-gray-900 p-4 mx-auto mt-10">
         <ol className="flex justify-between space-x-4 w-full border-b pb-6">
           <PlayerInfo
             name="player 1"
