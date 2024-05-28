@@ -11,10 +11,10 @@ export default function GameBoard({ game, handleClick, gameOver }) {
             {row.map((playerSymbol, colIndex) => (
               <button
                 disabled={playerSymbol !== null || gameOver}
-                className={`col  select-none active:w-[90%] text-6xl active:text-5xl bg-gradient-to-tr from-blue-500 to-blue-200 hover:from-blue-700  uppercase hover:to-blue-300 duration-400 transition-all w-full rounded mx-auto aspect-square ${
+                className={`col  select-none active:w-[90%] text-6xl active:text-5xl bg-gradient-to-tr from-blue-500 to-blue-200   uppercase  duration-400 transition-all w-full rounded mx-auto aspect-square ${
                   playerSymbol === "x" || playerSymbol === "o"
                     ? "text-red-500 from-red-500 to-orange-200 bg-opacity-20"
-                    : "text-black"
+                    : "text-black hover:from-blue-700 hover:to-blue-300 "
                 }`}
                 key={colIndex}
                 onClick={() => {
