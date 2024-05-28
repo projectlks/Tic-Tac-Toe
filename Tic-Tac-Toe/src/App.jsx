@@ -2,8 +2,8 @@ import PlayerInfo from "./components/playerInfo";
 import GameBoard from "./components/GameBoard";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winningCombination";
-import { useEffect, useState } from "react";
-import { data } from "autoprefixer";
+import { useEffect, useRef, useState } from "react";
+import win from './assets/win.mp3'
 
 let originalArray = [
   [null, null, null],
@@ -16,6 +16,10 @@ function App() {
   let game = [...originalArray.map( row => [...row]
 )];
   let winning;
+
+  const winRef = useRef(null)
+
+
 
   for (const turn of playingInfo) {
     const { row, col, player } = turn;
@@ -30,6 +34,7 @@ function App() {
 
     if (first && first === second && first === third) {
       winning = first;
+       winRef.current.play();
     }
   }
 
@@ -84,6 +89,7 @@ playingInfo.length  > 4 &&  playingInfo[playingInfo.length - 2].player === "X" ?
             isAvtive={currentPlayer === "O"}
           />
         </ol>
+        <audio src={win} ref={winRef}></audio>
         {winning && (
           <p className="text-3xl text-gray-100"> Winner is {winning} </p>
         )}
