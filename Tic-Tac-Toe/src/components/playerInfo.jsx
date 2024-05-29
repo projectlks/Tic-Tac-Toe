@@ -1,14 +1,13 @@
 import React, { useRef, useState } from "react";
 
-export default function PlayerInfo({ name, sign, isAvtive }) {
+export default function PlayerInfo({ name, sign, isActive, setPlayerName }) {
   const [isEdit, setIsEdit] = useState(false);
-  const [playerName, setPlayerName] = useState(name);
   const [error, setError] = useState(false);
   const nameRef = useRef();
 
   const handleButtonClick = () => {
     if (isEdit) {
-      if (playerName) {
+      if (name) {
         setIsEdit(false);
       } else {
         setError(true);
@@ -22,18 +21,18 @@ export default function PlayerInfo({ name, sign, isAvtive }) {
   return (
     <li
       className={`flex transition-all justify-evenly space-x-1 md:space-x-4 font-bold text-gray-300 items-center md:px-2 py-2 border-2 w-1/2 md:w-[40%] ${
-        isAvtive ? " rounded-xl text-blue-500 border-blue-500 border " : ""
+        isActive ? " rounded-xl text-blue-500 border-blue-500 border " : ""
       }`}
     >
       <div className="w-[100px] text-xs md:text-base whitespace-nowrap md:w-[150px]">
         {!isEdit ? (
           <div className="min-w-full px-3 p-1  border-gray-900 text-center">
-            {playerName}
+            {name}
           </div>
         ) : (
           <input
             ref={nameRef}
-            value={playerName}
+            value={name}
             onChange={(e) => {
               setPlayerName(e.target.value);
               setError(false);
@@ -51,7 +50,9 @@ export default function PlayerInfo({ name, sign, isAvtive }) {
         )}
       </div>
 
-      <span className="text-md md:text-3xl text-blue-500 hidden md:inline-block border px-1 md:px-2 rounded">{sign}</span>
+      <span className="text-md md:text-3xl text-blue-500 hidden md:inline-block border px-1 md:px-2 rounded">
+        {sign}
+      </span>
 
       <button
         type="button"
