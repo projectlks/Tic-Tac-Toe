@@ -20,7 +20,7 @@ export default function PlayerInfo({ name, sign, isActive, setPlayerName }) {
 
   return (
     <li
-      className={`flex transition-all justify-evenly space-x-1 md:space-x-4 font-bold text-gray-300 items-center md:px-2 py-2 border-2 w-1/2 md:w-[40%] ${
+      className={`flex transition-all justify-evenly space-x-1 md:space-x-4 font-bold text-gray-300 items-center md:px-2 py-2 border-2 w-[45%] md:w-[40%] ${
         isActive ? " rounded-xl text-blue-500 border-blue-500 border " : ""
       }`}
     >

@@ -96,7 +96,7 @@ function App() {
   return (
     <>
       {/* Game section */}
-      <section className="w-[90%] md:w-[700px] border bg-gray-900 p-4 mx-auto mt-10">
+      <section className="w-[90%] md:w-[700px] border bg-red-900 p-4 mx-auto mt-10">
         {/* Player information */}
         <ol className="flex justify-between space-x-4 w-full border-b pb-6">
           <PlayerInfo
