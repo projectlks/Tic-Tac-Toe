@@ -28,7 +28,7 @@ export default function GameBoard({ game, handleClick, gameOver }) {
                 disabled={playerSymbol !== null || gameOver}
                 className={`col select-none active:w-[90%] text-3xl md:text-6xl active:text-5xl bg-gradient-to-tr from-blue-500 to-blue-200 uppercase duration-400 transition-all w-full rounded mx-auto aspect-square ${
                   playerSymbol === "x" || playerSymbol === "o"
-                    ? "text-red-500 from-red-500 to-orange-200 bg-opacity-20"
+                    ? "text-red-800 from-red-600 line-through to-red-300 bg-opacity-20"
                     : "text-black hover:from-blue-700 hover:to-blue-300"
                 }`}
                 key={colIndex}
